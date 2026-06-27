@@ -6,6 +6,7 @@ services:
     environment:
       - FLASK_SECRET_KEY=super_secret_ctf_key_2026
       - OLLAMA_HOST=http://ollama:11434
+      - WERKZEUG_DEBUG_PIN=off
     depends_on:
       - ollama
     restart: unless-stopped
