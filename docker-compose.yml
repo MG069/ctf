@@ -1,0 +1,35 @@
+services:
+  forum-app:
+    build: ./forum-app
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_SECRET_KEY=super_secret_ctf_key_2026
+      - OLLAMA_HOST=http://ollama:11434
+    depends_on:
+      - ollama
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+
+  support:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: supersecurerootpw_2026_x
+      MYSQL_DATABASE: forum_backup
+      MYSQL_USER: sh4d0w_mod
+      MYSQL_PASSWORD: root
+    volumes:
+      - ./forum-app/db-init:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+
+volumes:
+  ollama_data:

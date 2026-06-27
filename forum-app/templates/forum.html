@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}DarkNet Forum{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h3 class="text-hacker mb-4">📋 Forum-Beiträge</h3>
+
+        {% for post in posts %}
+        <div class="post-card {{ 'pinned' if post['pinned'] }}">
+            <div class="d-flex align-items-start">
+                <span class="avatar">{{ post['avatar'] }}</span>
+                <div class="flex-grow-1">
+                    <div class="d-flex justify-content-between">
+                        <strong>{{ post['username'] }}</strong>
+                        {% if post['pinned'] %}
+                        <span class="badge bg-danger">📌 ANGEPINNT</span>
+                        {% endif %}
+                    </div>
+                    <h5 class="mt-1">{{ post['title'] }}</h5>
+                    <p class="mb-1">{{ post['content'] | safe }}</p>
+                    <small class="text-muted">
+                        {{ post['created_at'] }} · {{ post['category'] }}
+                    </small>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- TODO: cleanup old routes before next release -->
+{% endblock %}

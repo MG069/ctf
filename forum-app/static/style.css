@@ -1,0 +1,219 @@
+/* DarkNet Forum – Hacker Theme CSS */
+
+body {
+    background-color: #0a0a0a;
+    color: #00ff41;
+    font-family: 'Courier New', monospace;
+}
+
+.navbar {
+    font-family: 'Courier New', monospace;
+}
+
+.card {
+    background-color: #111;
+    border: 1px solid #00ff41;
+    border-radius: 4px;
+}
+
+.card-header {
+    background-color: #1a1a1a !important;
+    border-bottom: 1px solid #00ff41;
+}
+
+.btn-hacker {
+    background-color: #00ff41;
+    color: #000;
+    border: none;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+}
+
+.btn-hacker:hover {
+    background-color: #00cc33;
+    color: #000;
+}
+
+.btn-danger {
+    background-color: #ff0040;
+    border: none;
+}
+
+.form-control {
+    background-color: #1a1a1a;
+    border: 1px solid #00ff41;
+    color: #00ff41;
+    font-family: 'Courier New', monospace;
+}
+
+.form-control:focus {
+    background-color: #222;
+    color: #00ff41;
+    border-color: #00ff41;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+}
+
+.terminal-box {
+    background-color: #0d0d0d;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    color: #00ff41;
+}
+
+.post-card {
+    background-color: #111;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 10px;
+    transition: border-color 0.2s;
+}
+
+.post-card:hover {
+    border-color: #00ff41;
+}
+
+.post-card.pinned {
+    border-color: #ff0040;
+    border-width: 2px;
+}
+
+.avatar {
+    font-size: 2rem;
+    margin-right: 10px;
+}
+
+.text-hacker {
+    color: #00ff41;
+}
+
+.text-danger-glow {
+    color: #ff0040;
+    text-shadow: 0 0 10px #ff0040;
+}
+
+.text-muted {
+    color: #666 !important;
+}
+
+a {
+    color: #00ff41;
+}
+
+a:hover {
+    color: #00cc33;
+}
+
+.alert-danger {
+    background-color: #330000;
+    border-color: #ff0040;
+    color: #ff6680;
+}
+
+.alert-success {
+    background-color: #003300;
+    border-color: #00ff41;
+    color: #00ff41;
+}
+
+.alert-warning {
+    background-color: #332200;
+    border-color: #ff8800;
+    color: #ffaa44;
+}
+
+.badge-role {
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.badge-guest { background-color: #444; color: #aaa; }
+.badge-member { background-color: #004400; color: #00ff41; }
+.badge-vip { background-color: #440044; color: #ff00ff; }
+.badge-moderator { background-color: #444400; color: #ffff00; }
+.badge-admin { background-color: #440000; color: #ff0040; }
+.badge-root { background-color: #ff0040; color: #fff; }
+
+/* Glitch effect for title */
+.glitch {
+    animation: glitch 1s infinite;
+}
+
+@keyframes glitch {
+    0% { text-shadow: 2px 0 #ff0040, -2px 0 #00ff41; }
+    25% { text-shadow: -2px 0 #ff0040, 2px 0 #00ff41; }
+    50% { text-shadow: 2px 2px #ff0040, -2px -2px #00ff41; }
+    75% { text-shadow: -2px 2px #ff0040, 2px -2px #00ff41; }
+    100% { text-shadow: 2px 0 #ff0040, -2px 0 #00ff41; }
+}
+
+/* Chat bubbles */
+.chat-container {
+    height: 400px;
+    overflow-y: auto;
+    padding: 15px;
+    background-color: #0a0a0a;
+    border: 1px solid #333;
+    border-radius: 4px;
+}
+
+.chat-message {
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    max-width: 80%;
+}
+
+.chat-user {
+    background-color: #1a2a1a;
+    border: 1px solid #00ff41;
+    margin-left: auto;
+    text-align: right;
+}
+
+.chat-bot {
+    background-color: #1a1a2a;
+    border: 1px solid #4444ff;
+    color: #aaaaff;
+}
+
+/* Honeypot */
+.honeypot-warning {
+    background-color: #ff0040;
+    color: white;
+    padding: 40px;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+/* Victory */
+.victory-box {
+    text-align: center;
+    padding: 60px;
+    border: 3px solid #00ff41;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #001100, #002200);
+}
+
+.victory-box h1 {
+    font-size: 3rem;
+    color: #00ff41;
+    text-shadow: 0 0 20px #00ff41;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #00ff41; border-radius: 4px; }

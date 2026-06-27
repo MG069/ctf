@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}ForumBot – AI Assistent{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0">🤖 ForumBot <small class="text-muted">– AI Assistent</small></h4>
+            </div>
+            <div class="card-body p-0">
+                <div class="chat-container" id="chatContainer">
+                    <div class="chat-message chat-bot">
+                        Hey! I'm ForumBot, your cybersecurity assistant. 
+                        Ask me anything about hacking, networking, or security! 🔒
+                    </div>
+                </div>
+                <div class="p-3 border-top border-secondary">
+                    <div class="input-group">
+                        <input type="text" id="chatInput" class="form-control" 
+                               placeholder="Type a message..." 
+                               autocomplete="off">
+                        <button class="btn btn-hacker" id="sendBtn" onclick="sendMessage()">
+                            Senden ▶
+                        </button>
+                    </div>
+                    <div id="loading" style="display:none;" class="text-center mt-2">
+                        <small class="text-muted">ForumBot denkt nach... 🤔</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const chatContainer = document.getElementById('chatContainer');
+const chatInput = document.getElementById('chatInput');
+const loading = document.getElementById('loading');
+
+chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage();
+});
+
+async function sendMessage() {
+    const message = chatInput.value.trim();
+    if (!message) return;
+
+    // Add user message
+    addMessage(message, 'user');
+    chatInput.value = '';
+    loading.style.display = 'block';
+    document.getElementById('sendBtn').disabled = true;
+
+    try {
+        const resp = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: message })
+        });
+        const data = await resp.json();
+        
+        if (data.error) {
+            addMessage('Fehler: ' + data.error, 'bot');
+        } else {
+            addMessage(data.response, 'bot');
+        }
+    } catch (err) {
+        addMessage('Verbindungsfehler. Ist ForumBot online?', 'bot');
+    }
+
+    loading.style.display = 'none';
+    document.getElementById('sendBtn').disabled = false;
+}
+
+function addMessage(text, type) {
+    const div = document.createElement('div');
+    div.className = `chat-message chat-${type === 'user' ? 'user' : 'bot'}`;
+    div.textContent = text;
+    chatContainer.appendChild(div);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+</script>
+{% endblock %}

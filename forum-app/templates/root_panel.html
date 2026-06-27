@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Root Access{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5">
+        <div class="card" style="border-color: #ff0040;">
+            <div class="card-header text-center" style="background-color: #1a0000 !important;">
+                <h3 class="text-danger-glow">👑 R00T PANEL</h3>
+                <small class="text-muted">Höchste Zugangsstufe. Code erforderlich.</small>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">Root-Zugangscode</label>
+                        <input type="text" name="root_code" class="form-control"
+                               placeholder="R00T{...}" required autofocus
+                               style="border-color: #ff0040;">
+                    </div>
+                    <button type="submit" class="btn btn-danger w-100">
+                        >> ROOT ACCESS
+                    </button>
+                </form>
+                <div class="mt-3 text-center">
+                    <small class="text-muted">
+                        ⚠️ Nur 1 Versuch alle 10 Sekunden. Kein Brute-Force.
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

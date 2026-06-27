@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Rate Limited{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6 text-center">
+        <div class="card" style="border-color: #ff8800;">
+            <div class="card-body p-5">
+                <h2 style="color: #ff8800;">⏳ Too Many Requests</h2>
+                <p class="mt-3" style="color: #aaa;">
+                    Rate limit exceeded. Try again in <strong>10 seconds</strong>.
+                </p>
+                <a href="javascript:history.back()" class="btn btn-outline-warning mt-3">
+                    ← Back
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}DarkNet Forum – Login{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header text-center">
+                <h2 class="glitch mb-0">💀 DarkNet Forum</h2>
+                <small class="text-muted">Nur für autorisierte Mitglieder</small>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST" action="{{ url_for('login') }}">
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text" name="username" class="form-control" 
+                               placeholder="Enter username..." required autofocus>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" 
+                               placeholder="Enter password..." required>
+                    </div>
+                    <button type="submit" class="btn btn-hacker w-100">
+                        >> ACCESS SYSTEM
+                    </button>
+                </form>
+                <div class="mt-3 text-center">
+                    <small class="text-muted">
+                        Unauthorized access is prohibited and will be logged.
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 
+    ============================================
+    MAINTENANCE NOTE - DO NOT DELETE
+    Temporary guest access for testing:
+    Username: guest
+    Password: W3lc0me!
+    TODO: Remove before production deployment!
+    ============================================
+-->
+{% endblock %}

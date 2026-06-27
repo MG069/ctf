@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Admin Panel{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h3 class="text-danger-glow mb-4">⚙️ Admin Panel</h3>
+
+        <!-- Server Logs -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">📜 Server-Logs</h5>
+            </div>
+            <div class="card-body">
+                <div class="terminal-box" style="max-height: 500px; overflow-y: auto; font-size: 0.85rem;">
+                    {% for log in logs %}
+                    <div style="{% if '[AUTH]' in log and 'fehlgeschlagen' in log %}color: #ff6666;{% elif '[AUTH]' in log and 'erfolgreich' in log %}color: #66ff66;{% elif '[CRON]' in log %}color: #888;{% elif '[INIT]' in log %}color: #6699ff;{% elif '[BOT]' in log %}color: #cc99ff;{% elif '[RATE]' in log %}color: #ffaa44;{% elif '[MOD]' in log %}color: #ffff00;{% else %}color: #00ff41;{% endif %}">
+                        {{ log }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- File Viewer (Path Traversal) -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">📂 Config-Datei anzeigen</h5>
+            </div>
+            <div class="card-body">
+                <form method="GET" action="{{ url_for('admin_panel') }}">
+                    <div class="input-group">
+                        <span class="input-group-text bg-dark text-success border-success">
+                            Dateipfad:
+                        </span>
+                        <input type="text" name="file" class="form-control"
+                               placeholder="/app/logs/access.log"
+                               value="{{ requested_file }}">
+                        <button class="btn btn-hacker" type="submit">
+                            Datei lesen
+                        </button>
+                    </div>
+                </form>
+
+                {% if file_content is not none %}
+                <div class="terminal-box mt-3">
+                    <small class="text-muted">Dateiinhalt von: {{ requested_file }}</small>
+                    <hr style="border-color: #333;">
+                    <pre style="color: #00ff41; margin: 0; white-space: pre-wrap;">{{ file_content }}</pre>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">⚡ Quick Actions</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-flex gap-2">
+                    <a href="{{ url_for('forum') }}" class="btn btn-outline-light">
+                        📋 Forum
+                    </a>
+                    <a href="{{ url_for('logout') }}" class="btn btn-outline-danger">
+                        🚪 Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

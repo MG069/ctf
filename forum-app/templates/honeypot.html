@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Download Area{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3>📦 Exploit-Sammlung v3.2</h3>
+                <small class="text-muted">Letzte Aktualisierung: 25.03.2026</small>
+            </div>
+            <div class="card-body p-4">
+                <div class="terminal-box mb-4">
+                    <div style="color: #666; margin-bottom: 8px;">root@darknet:/exploits# ls -la</div>
+                    <div>-rw-r--r--  1 root root  873M  Mar 25 02:14  <span class="text-muted">exploit_pack_2026.zip</span></div>
+                    <div>-rw-r--r--  1 root root  1.2G  Mar 23 18:30  <span class="text-muted">0day_collection.tar.gz</span></div>
+                    <div style="color: #00ff41;">-rw-r--r--  1 root root   128B  Mar 25 02:14  access_code.txt</div>
+                </div>
+
+                <p class="text-muted mb-4">
+                    Die Exploit-Packs werden nach Verifizierung freigeschaltet.<br>
+                    Lade zuerst den Access-Code herunter.
+                </p>
+
+                <div class="d-grid gap-2">
+                    <a href="/honeypot/download" class="btn btn-hacker btn-lg">
+                        📥 access_code.txt herunterladen
+                    </a>
+                    <button class="btn btn-outline-secondary" disabled>
+                        🔒 exploit_pack_2026.zip (gesperrt)
+                    </button>
+                    <button class="btn btn-outline-secondary" disabled>
+                        🔒 0day_collection.tar.gz (gesperrt)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

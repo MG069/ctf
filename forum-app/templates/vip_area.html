@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}VIP Bereich{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h3 class="text-hacker mb-2">⭐ VIP Bereich</h3>
+        <p class="text-muted mb-4">Willkommen im exklusiven VIP-Bereich. Hier siehst du alle Mitglieder und ihre Profile.</p>
+
+        <!-- Eigener Container -->
+        <div class="card mb-4" style="border: 1px solid #00ff00;">
+            <div class="card-header" style="background: rgba(0,255,0,0.05);">
+                <h5 class="mb-0">🗂️ Dein Container</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="avatar">{{ user['avatar'] }}</span>
+                    <div>
+                        <h5 class="mb-0">{{ user['username'] }}</h5>
+                        <span class="badge-role badge-{{ user['role'] }}">{{ user['role'] | upper }}</span>
+                    </div>
+                </div>
+                <form method="POST" action="/vip/update-bio">
+                    <div class="mb-2">
+                        <label class="text-muted"><small>Deine Bio:</small></label>
+                        <textarea name="bio" class="form-control bg-dark text-light" rows="3" style="border: 1px solid #333; font-family: monospace;">{{ user['bio'] }}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-sm btn-outline-success">💾 Speichern</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for member in members %}
+            <div class="col-md-6 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="avatar">{{ member['avatar'] }}</span>
+                            <div>
+                                <h5 class="mb-0">{{ member['username'] }}</h5>
+                                <span class="badge-role badge-{{ member['role'] }}">
+                                    {{ member['role'] | upper }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="terminal-box">
+                            <small class="text-muted">Bio:</small><br>
+                            <code style="white-space: pre-wrap;">{{ member['bio'] }}</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
